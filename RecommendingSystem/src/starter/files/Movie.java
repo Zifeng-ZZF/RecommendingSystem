@@ -11,11 +11,11 @@ public class Movie {
 	private int minutes = 0;
 	private String poster = null;
 
-	public Movie(String id, String title, int year, String genres, 
+	public Movie(String id, String title, String year, String genres, 
 			String director, String country, int minutes, String poster) {
-		this.id = id;
-		this.title = title;
-		this.year = year;
+		this.id = id.trim();
+		this.title = title.trim();
+		this.year = Integer.parseInt(year.trim());
 		this.genres = genres;
 		this.director = director;
 		this.country = country;
@@ -24,8 +24,8 @@ public class Movie {
 	}
 	
 	public String toString() {
-		return id + " " + title + " " + year + " " + genres + " "
-	+ director + " " + country + " " + minutes + " " + poster;
+		return "Movie [" + "id=" + id + ", " + "title=" + title + ", " + "year=" + year + ", " + "genres=" + genres + ", "
+	+ "director=" + director + ", " + "country=" + country + ", " + "minutes=" + minutes + ", " + "poster=" + poster +"]";
 	}
 
 	public String getId() {
