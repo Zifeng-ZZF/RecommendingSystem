@@ -12,14 +12,14 @@ public class Movie {
 	private String poster = null;
 
 	public Movie(String id, String title, String year, String genres, 
-			String director, String country, int minutes, String poster) {
+			String director, String country, String minutes, String poster) {
 		this.id = id.trim();
 		this.title = title.trim();
 		this.year = Integer.parseInt(year.trim());
 		this.genres = genres;
 		this.director = director;
 		this.country = country;
-		this.minutes = minutes;
+		this.minutes = Integer.parseInt(minutes.trim());
 		this.poster = poster;
 	}
 	
