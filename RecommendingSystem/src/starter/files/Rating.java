@@ -2,7 +2,7 @@ package starter.files;
 
 public class Rating {
 	
-	//Description of the moive
+	//Description of the moive: movie ID
 	private String item = null;
 	//Value of the rating
 	private double value = 0.0;
