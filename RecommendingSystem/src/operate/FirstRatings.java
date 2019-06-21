@@ -21,7 +21,7 @@ public class FirstRatings {
 //			System.out.println(movie);
 //		}
 //		test.testLoadMovies();
-		test.testLoadRaters();
+//		test.testLoadRaters();
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class FirstRatings {
 	 * 5. The maximum of movies by any director and the director
 	 */
 	public void testLoadMovies() {
-		ArrayList<Movie> arrayList = loadMovies("src/data/ratedmovies_short.csv");
+		ArrayList<Movie> arrayList = loadMovies("src/data/ratedmoviesfull.csv");
 		
 		//1. number of movies
 		System.out.println("There are " + arrayList.size() + " movies in the list.");
@@ -173,7 +173,7 @@ public class FirstRatings {
 	 * 6. Find the number of movies rated by all the raters
 	 */
 	public void testLoadRaters() {
-		ArrayList<Rater> raters = loadRaters("src/data/ratings_short.csv");
+		ArrayList<Rater> raters = loadRaters("src/data/ratings.csv");
 		//1. number of rater
 		System.out.println("There are " + raters.size() + " raters in the list.");
 		
@@ -186,7 +186,7 @@ public class FirstRatings {
 		}
 		
 		//3. Find the number of ratings of a specified rater (rater_id)
-		String raterID = "2";
+		String raterID = "193";
 		Rater temp = null;
 		for(Rater rater : raters) {
 			if(rater.getID().equals(raterID))
