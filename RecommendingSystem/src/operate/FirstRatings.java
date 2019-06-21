@@ -20,7 +20,8 @@ public class FirstRatings {
 //		for(Movie movie : testArr) {
 //			System.out.println(movie);
 //		}
-		test.testLoadMovies();
+//		test.testLoadMovies();
+		test.testLoadRaters();
 	}
 
 	/**
@@ -163,9 +164,73 @@ public class FirstRatings {
 	}
 	
 	/**
-	 * Test the method "loadRaters("
+	 * Test the method "loadRaters()"
+	 * 1. Print total number of raters
+	 * 2. Print raterID + number of ratings + ratings + movie
+	 * 3. Find the number of ratings of a specified rater (rater_id)
+	 * 4. The maximum number of ratings by any rater and the raters
+	 * 5. Find the number of raters a specified movie has
+	 * 6. Find the number of movies rated by all the raters
 	 */
 	public void testLoadRaters() {
+		ArrayList<Rater> raters = loadRaters("src/data/ratings_short.csv");
+		//1. number of rater
+		System.out.println("There are " + raters.size() + " raters in the list.");
 		
+		//2. rater info
+		for(Rater rater : raters) {
+			System.out.println("ID: " + rater.getID() + ", " + rater.getItemsRated().size() + " ratings:");
+			for(String item : rater.getItemsRated()) {
+				System.out.println("   item " + item + " has rating " + rater.getRating(item));
+			}
+		}
+		
+		//3. Find the number of ratings of a specified rater (rater_id)
+		String raterID = "2";
+		Rater temp = null;
+		for(Rater rater : raters) {
+			if(rater.getID().equals(raterID))
+				temp = rater;
+		}
+		System.out.println("There are " + temp.numRatings() + " ratings of rater " + raterID);
+		
+		//4. Maximum number of ratings
+		int max = 0;
+		int count = 0;
+		for(Rater rater : raters) {
+			if(rater.numRatings() > max)
+				max = rater.numRatings();
+		}
+		
+		System.out.println("Maximum: " + max);
+		for(Rater rater : raters) {
+			if(rater.numRatings() == max) {
+				count ++;
+				System.out.println(rater.getID() + " has maximum number of ratings, ");
+			}
+		}
+		System.out.println("Total " + count + " raters have maximum ratings number.");
+		
+		//5. Find number of raters/ratings of certain movie
+		String movieID = "1798709";
+		count = 0;
+		for(Rater rater : raters) {
+			for(String item : rater.getItemsRated()) {
+				if(item.equals(movieID)) {
+					count ++;
+					break;
+				}
+			}
+		}
+		System.out.println("Movie " + movieID + " has " + count + " ratings.");
+		
+		//6. Find the number of movies rated by all raters / find the total number of movies being rated
+		Set<String> set = new HashSet<>();
+		for(Rater rater : raters) {
+			for(String item : rater.getItemsRated()) {
+				set.add(item);
+			}
+		}
+		System.out.println("Total " + set.size() + " movies are rated.");
 	}
 }
